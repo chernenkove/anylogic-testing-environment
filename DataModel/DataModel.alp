@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*************************************************
+	         AnyLogic Project File 
+*************************************************	         
+-->
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="7.3.7.201703161658" AlpVersion="7.3.3">
+<Model>
+	<Id>1630303945740</Id>
+	<Name><![CDATA[DataModel]]></Name>
+	<EngineVersion>6</EngineVersion>
+	<JavaPackageName><![CDATA[datamodel]]></JavaPackageName>
+	<ModelTimeUnit><![CDATA[Minute]]></ModelTimeUnit>
+	<ActiveObjectClasses>
+	</ActiveObjectClasses>	
+	<DifferentialEquationsMethod>EULER</DifferentialEquationsMethod>
+	<MixedEquationsMethod>RK45_NEWTON</MixedEquationsMethod>
+	<AlgebraicEquationsMethod>MODIFIED_NEWTON</AlgebraicEquationsMethod>
+	<AbsoluteAccuracy>1.0E-5</AbsoluteAccuracy>
+	<FixedTimeStep>0.001</FixedTimeStep>
+	<RelativeAccuracy>1.0E-5</RelativeAccuracy>
+	<TimeAccuracy>1.0E-5</TimeAccuracy>
+	<Database>
+		<Logging>false</Logging>
+		<AutoExport>false</AutoExport>
+		<ImportSettings>
+		</ImportSettings>
+		<ExportSettings>
+			<ExportExcelFilePath><![CDATA[]]></ExportExcelFilePath>
+		</ExportSettings>
+	</Database>	
+	<JavaClasses>
+		<!--   =========   Java Class   ========  -->
+		<JavaClass>
+			<Id>1630305394331</Id>
+			<Name><![CDATA[Scenario]]></Name>
+			<Text><![CDATA[import java.text.SimpleDateFormat;
+import java.text.ParseException;
+/**
+ * Scenario
+ */	
+public class Scenario {
+
+	SimpleDateFormat dataFormat = new SimpleDateFormat("dd.MM.yyyy");
+	
+	private String name;
+	private Date beginDate;
+	private Date endDate;
+	
+	private int truckCount;
+	private double truckCapacity;
+	
+	private double sourceBunkerVolume;
+	private double sourceBunkerInitStock;	
+	private double destBunkerVolume;
+	private double destBunkerInitStock;
+	
+    public Scenario(String name, String beginDate, String endDate, int truckCount, double truckCapacity, double sourceBunkerVolume, double sourceBunkerInitStock, double destBunkerVolume, double destBunkerInitStock) {
+    	this.name = name;
+    	try {
+    		this.beginDate =  dataFormat.parse( beginDate );
+    		this.endDate = dataFormat.parse( endDate );
+    	} catch ( ParseException exception ){
+    		throw new RuntimeException("Error in date");
+    	}
+    	this.truckCount = truckCount;
+    	this.truckCapacity = truckCapacity;
+    	this.sourceBunkerVolume = sourceBunkerVolume;
+    	this.sourceBunkerInitStock = sourceBunkerInitStock;
+    	this.destBunkerVolume = destBunkerVolume;
+    	this.destBunkerInitStock = destBunkerInitStock;    
+    }
+    
+    public String getName(){
+    	return name;
+    }
+    
+    public Date getBeginDate(){
+    	return beginDate;
+    }
+    
+    public Date getEndDate(){
+    	return endDate;
+    }
+    
+    public int getTruckCount(){
+    	return truckCount;
+    }
+    
+    public void setTruckCount( int newValue ){
+    	this.truckCount = newValue;
+    }
+
+    public double getTruckCapacity(){
+    	return truckCapacity;
+    }
+    
+    public double getSourceBunkerVolume(){
+    	return sourceBunkerVolume;
+    }
+    public double getSourceBunkerInitStock(){
+    	return sourceBunkerInitStock;
+    }
+    public double getDestBunkerVolume(){
+    	return destBunkerVolume;
+    }
+    public double getDestBunkerInitStock(){
+    	return destBunkerInitStock;
+    }
+    
+	@Override
+	public String toString() {
+		return name + ": " + beginDate + " - " + endDate;
+	}
+
+}]]></Text>
+		</JavaClass>
+	</JavaClasses>
+</Model>
+</AnyLogicWorkspace>
